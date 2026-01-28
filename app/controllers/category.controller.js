@@ -1,8 +1,8 @@
-const Category = require("../models/category.model");
+const Category = require("../models/category.model"); //ດຶງ (import) ໄຟລ໌ category.model.js ຈາກໂຟນເດີ modelsເພື່ອນຳມາໃຊ້ເຮັດວຽກກັບຕາຕະລາງ category ໃນ database.
 
-exports.findAll = (req, res) => {
+exports.findAll = (req, res) => { //ເອີ້ນຟັງຊັນ getAll() ຈາກ model.ໜ້າທີ່ມັນແມ່ນດຶງຂໍ້ມູນ categories ທັງໝົດຈາກ database.
   Category.getAll((err, data) => {
-    if (err)
+    if (err) 
       res.status(500).send({
         message:
           err.message || "Some error occurred while retrieving categories."
@@ -12,9 +12,9 @@ exports.findAll = (req, res) => {
   });
 };
 
-exports.create = (req, res) => {
-  if (!req.body.cat_name) {
-    res.status(400).send({
+exports.create = (req, res) => { //ສ້າງຟັງຊັນ create ເພື່ອ export ໄປໃຫ້ routes ໃຊ້.ໃຊ້ສຳລັບບັນທຶກ Category ໃໝ່ເຂົ້າ database.
+  if (!req.body.cat_name) { //ກວດວ່າ ຜູ້ໃຊ້ສົ່ງ cat_name ມາຫຼືບໍ່
+    res.status(400).send({ //ຄືຄ່າທີ່ client ສົ່ງຜ່ານ body (POST)
       message: "Category name cannot be empty!"
     });
     return;
